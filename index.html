@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staflow — Something new is coming</title>
+    <meta name="description" content="Staflow is building smarter tools for healthcare operations. Coming soon.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1B2A4A;
+            --navy-light: #253759;
+            --navy-dark: #111D35;
+            --white: #FFFFFF;
+            --gray-100: #F4F6F9;
+            --gray-200: #E2E6ED;
+            --gray-400: #9BA3B5;
+            --gray-600: #5E6577;
+            --accent: #3B7DDD;
+            --accent-hover: #2E6AC4;
+            --success: #2EAD6B;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--white);
+            color: var(--navy);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-full {
+            height: 34px;
+            width: auto;
+        }
+
+        .nav-domain {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--navy-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--gray-200);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--navy);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--gray-600);
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── EMAIL FORM ── */
+        .email-form {
+            display: flex;
+            gap: 0.65rem;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .email-form input[type="email"] {
+            flex: 1;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            outline: none;
+            color: var(--navy);
+            transition: border-color 0.2s;
+        }
+
+        .email-form input[type="email"]::placeholder {
+            color: var(--gray-400);
+        }
+
+        .email-form input[type="email"]:focus {
+            border-color: var(--accent);
+        }
+
+        .email-form button {
+            padding: 0.85rem 1.6rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .email-form button:hover {
+            background: var(--navy-light);
+        }
+
+        .form-note {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* Success state */
+        .email-form.success input[type="email"] {
+            border-color: var(--success);
+        }
+
+        .form-success {
+            display: none;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .form-success.visible {
+            display: block;
+        }
+
+        /* ── FEATURES STRIP ── */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3rem 2rem 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.65rem;
+        }
+
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--navy-light);
+        }
+
+        .feature h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .feature p {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            border-top: 1px solid var(--gray-100);
+            margin-top: auto;
+        }
+
+        footer a {
+            color: var(--gray-600);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--navy);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .email-form button {
+                width: 100%;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo-container">
+            <img src="staflow_logo.png" alt="Staflow" class="logo-full">
+        </div>
+        <span class="nav-domain">staflow.ca</span>
+    </nav>
+
+    <!-- HERO -->
+    <main class="hero">
+        <span class="badge">Coming Soon</span>
+
+        <h1>Smarter tools for healthcare operations.</h1>
+
+        <p>
+            We're building something new to help healthcare teams work more
+            efficiently. Stay tuned.
+        </p>
+
+        <form class="email-form" id="signupForm" onsubmit="handleSubmit(event)">
+            <input type="email" id="emailInput" placeholder="your@email.com" required aria-label="Email address">
+            <button type="submit">Notify Me</button>
+        </form>
+        <p class="form-note" id="formNote">We'll let you know when we're ready.</p>
+        <p class="form-success" id="formSuccess">Thank you — we'll be in touch.</p>
+    </main>
+
+    <!-- FEATURE STRIP (removed for now) -->
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2026 Staflow.
+        <br>
+        <a href="mailto:hello@staflow.ca">hello@staflow.ca</a>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const form = document.getElementById('signupForm');
+            const note = document.getElementById('formNote');
+            const success = document.getElementById('formSuccess');
+
+            // For now, store locally. Replace with your email service (Mailchimp, ConvertKit, etc.)
+            console.log('Signup:', email);
+
+            // Show success state
+            form.classList.add('success');
+            note.style.display = 'none';
+            success.classList.add('visible');
+
+            // Disable the form
+            document.getElementById('emailInput').disabled = true;
+            form.querySelector('button').textContent = 'Submitted';
+            form.querySelector('button').disabled = true;
+        }
+    </script>
+
+</body>
+</html>
