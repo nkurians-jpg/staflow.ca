@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Staflow</title>
+<meta name="description" content="Zero Fees. Zero Billing Errors. You saw Staflow at the booth. The next step is a 30 minute briefing, in person at your office or in a virtual meeting, where we walk your team through how the application works and how simple agency invoicing becomes.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.ico">
+<link rel="icon" type="image/png" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .welcome-hero{padding:clamp(2.6rem,7vw,5rem) 0 clamp(2.4rem,5vw,4rem)}
+  .welcome-hero h1{font-size:clamp(2.6rem,8vw,4.4rem);margin:.6rem 0 .8rem}
+  .welcome-hero .tag{font-family:var(--head);font-weight:700;font-size:clamp(1.15rem,3vw,1.5rem);color:#fff;margin-bottom:.8rem}
+  .welcome-hero .lede{max-width:36rem}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+  .hero-grid .frame{transform:translateY(0)}
+  .note{font-size:.9rem;color:var(--c200);margin-top:1rem}
+
+  /* Next steps timeline */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2rem;position:relative}
+  @media (max-width:900px){.timeline{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.timeline{grid-template-columns:1fr}}
+  .tstep{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem 1.3rem 1.5rem;display:flex;flex-direction:column;gap:.5rem}
+  .tstep .k{display:flex;align-items:center;gap:.7rem;font-family:var(--head);font-weight:700;font-size:.8rem;letter-spacing:.12em;color:var(--c500)}
+  .tstep .k i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--c500);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.85rem;letter-spacing:0}
+  .tstep.now{border-color:var(--c500);box-shadow:0 0 0 3px var(--c50)}
+  .tstep.now .k{color:var(--navy)}
+  .tstep.now .k i{background:var(--navy)}
+  .tstep h3{font-size:1.15rem}
+  .tstep p{font-size:.95rem;color:var(--muted)}
+  .tstep .when{margin-top:auto;padding-top:.6rem;font-size:.82rem;font-weight:600;color:var(--c500);text-transform:uppercase;letter-spacing:.08em}
+  .tstep .btn{margin-top:.6rem;align-self:flex-start;padding:.65rem 1rem;font-size:.92rem}
+
+  /* Product gallery */
+  .gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.4rem;margin-top:2rem}
+  @media (max-width:860px){.gallery{grid-template-columns:1fr}}
+  .shot{display:flex;flex-direction:column;gap:.8rem}
+  .shot .frame{box-shadow:0 12px 32px rgba(23,30,56,.18),0 1px 3px rgba(23,30,56,.15);aspect-ratio:4/3;background:#E3E7F2;display:flex;align-items:center;justify-content:center;padding:14px}
+  .shot .frame img{max-height:100%;width:auto;max-width:100%;object-fit:contain;border-radius:8px}
+  .shot h3{font-size:1.05rem}
+  .shot p{font-size:.93rem;color:var(--muted)}
+  .big-shot{margin-top:2rem}
+  .big-shot .frame{max-width:960px;margin:0 auto}
+  .big-shot figcaption{text-align:center;margin-top:1rem;font-size:.9rem;color:var(--c200)}
+
+  /* Benefits */
+  .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem 2rem;margin-top:2rem}
+  @media (max-width:860px){.benefits{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.benefits{grid-template-columns:1fr}}
+  .benefit{padding-left:1.1rem;border-left:3px solid var(--c500)}
+  .benefit b{display:block;color:var(--navy);font-weight:600;margin-bottom:.25rem}
+  .benefit p{color:var(--muted);font-size:.95rem}
+
+  /* Cost + FAQ */
+  .cost{display:grid;grid-template-columns:1fr 1.3fr;gap:2.4rem;align-items:start}
+  @media (max-width:860px){.cost{grid-template-columns:1fr}}
+  .cost .card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:1.7rem 1.7rem 1.9rem}
+  .cost .card h3{color:#fff;font-size:1.2rem;margin-bottom:.4rem}
+  .cost .card .big{font-family:var(--head);font-weight:800;font-size:2.4rem;color:var(--c100);line-height:1.1;margin-bottom:.8rem}
+  .cost .card p{color:var(--c100);font-size:.95rem}
+  .faq{display:grid;gap:.6rem}
+  .faq details{border:1px solid var(--line);border-radius:12px;background:#fff;padding:0 1.1rem}
+  .faq summary{cursor:pointer;list-style:none;font-weight:600;color:var(--navy);padding:.95rem 0;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:var(--head);font-size:1.3rem;color:var(--c500);flex:none;line-height:1}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq details p{padding:0 0 1rem;color:var(--muted);font-size:.95rem}
+
+  /* Downloads */
+  .downloads{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+  @media (max-width:760px){.downloads{grid-template-columns:1fr}}
+  .dl{display:flex;gap:.9rem;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;background:#fff;text-decoration:none;color:var(--ink)}
+  .dl:hover{border-color:var(--c500)}
+  .dl svg{width:26px;height:26px;color:var(--c500);flex:none;margin-top:.1rem}
+  .dl b{display:block;color:var(--navy);font-weight:600}
+  .dl span{font-size:.85rem;color:var(--muted)}
+
+  /* People */
+  .people{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media (max-width:560px){.people{grid-template-columns:1fr}}
+  .person{border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;background:#fff}
+  .person b{display:block;font-weight:600;color:var(--navy)}
+  .person span{display:block;color:var(--muted);font-size:.9rem;margin-bottom:.3rem}
+  .person a{font-size:.95rem}
+
+  .sticky-cta{display:none}
+  @media (max-width:640px){
+    .sticky-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:.7rem 16px calc(.7rem + env(safe-area-inset-bottom));gap:.6rem}
+    .sticky-cta .btn{flex:1;padding:.8rem .6rem;font-size:.92rem}
+    body{padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header navy">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Staflow home"><img src="../assets/logo-white.png" alt="Staflow"></a>
+    <a class="btn btn-primary on-navy" href="https://calendly.com/nishanth-staflow/30min" target="_blank" rel="noopener" style="background:#fff;color:var(--navy);padding:.55rem .95rem;font-size:.9rem">Book a briefing</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="on-navy knot welcome-hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Thanks for visiting us at This is Long-Term Care 2026</p>
+        <h1>It starts here.</h1>
+        <p class="tag">Zero Fees. Zero Billing Errors.</p>
+        <p class="lede">You saw Staflow at the booth. The next step is a 30 minute briefing after the conference, in person at your office or in a virtual meeting, where we walk your team through how the application works and how simple agency invoicing becomes once it is in place.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://calendly.com/nishanth-staflow/30min" target="_blank" rel="noopener">
+            Book a 30 minute briefing
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+        <p class="note">Pick a date and time that suits you. We meet in person at your office or in a virtual meeting, whichever you prefer.</p>
+      </div>
+      <figure>
+        <div class="frame"><img src="../assets/command-center.jpg" alt="Staflow Command Center showing open shifts, pending agency responses, coverage gaps and overtime risk across homes" width="1600" height="1084"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="section" id="next">
+    <div class="wrap">
+      <p class="eyebrow">From the booth to your first verified invoice</p>
+      <h2 style="margin:.5rem 0 .8rem">Your next steps.</h2>
+      <p class="lede">Four steps, no IT project, nothing to buy. You are at step one.</p>
+      <div class="timeline">
+        <div class="tstep now">
+          <div class="k"><i>1</i> At the booth</div>
+          <h3>You have seen it work</h3>
+          <p>The kiosk, the Command Center and a verified invoice, live. If you missed any of it, the screens are below and the brochure is at the bottom of this page.</p>
+          <div class="when">Today</div>
+        </div>
+        <div class="tstep">
+          <div class="k"><i>2</i> Book a briefing</div>
+          <h3>In person or virtual</h3>
+          <p>A 30 minute walkthrough with you, your Director of Care and whoever handles agency invoices, in person at your office or in a virtual meeting. We show how the application works, from the shift request to the kiosk to the invoice, and how streamlined that process becomes for your team.</p>
+          <div class="when">After the conference</div>
+          <a class="btn btn-primary" href="https://calendly.com/nishanth-staflow/30min" target="_blank" rel="noopener">Pick a date and time</a>
+        </div>
+        <div class="tstep">
+          <div class="k"><i>3</i> Set up</div>
+          <h3>One working session</h3>
+          <p>Units, roles, rate cards, agencies and the kiosk are configured together with your scheduler in a single session. The tablet arrives already locked to the Staflow kiosk. Nothing is installed on your network.</p>
+          <div class="when">Days, not months</div>
+        </div>
+        <div class="tstep">
+          <div class="k"><i>4</i> Go live</div>
+          <h3>Agencies onboarded by us</h3>
+          <p>Staflow sets up each of your agencies directly and supports them. Your next request flows through the platform, staff clock in at the kiosk, and the first verified invoice arrives in the first billing cycle.</p>
+          <div class="when">First billing cycle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU SAW -->
+  <section class="section on-mist" id="product">
+    <div class="wrap">
+      <p class="eyebrow">What you saw at the booth</p>
+      <h2 style="margin:.5rem 0 .8rem">One platform. Every home, every agency, every shift.</h2>
+      <p class="lede">Staflow is built for networks of long-term care homes. Each home runs its own schedule, kiosk and agency relationships. Corporate sees all of it at once, live, without asking anyone for a report.</p>
+      <div class="gallery">
+        <div class="shot">
+          <div class="frame"><img src="../assets/facility-dashboard.jpg" alt="Facility dashboard showing staff on shift, unfilled shifts, agency hours, alerts and recent timesheets" width="1200" height="739"></div>
+          <h3>Facility dashboard</h3>
+          <p>Who is on shift right now, what is unfilled, agency spend this month and the recent timesheets, each marked verified or variance.</p>
+        </div>
+        <div class="shot kiosk">
+          <div class="frame"><img src="../assets/kiosk.jpg" alt="Staff kiosk clock in screen on a tablet with the current time and a list of staff names" width="600" height="741"></div>
+          <h3>Kiosk at the unit</h3>
+          <p>Agency staff select their name and clock in with a PIN. A locked tablet, no paper, no signature at the end of a tired shift. Time is recorded to the minute.</p>
+        </div>
+        <div class="shot">
+          <div class="frame"><img src="../assets/invoice-lines.jpg" alt="Invoice draft lines showing shift dates, units, times, hours, rates and amounts with a note that all shifts match kiosk clock records" width="1100" height="494"></div>
+          <h3>Verified invoice</h3>
+          <p>The agency drafts its invoice from the approved shifts only. Every line traces back to a clock in, a clock out and an approver. Your team approves it on the same screen.</p>
+        </div>
+      </div>
+      <p style="margin-top:1.8rem;font-size:.95rem;color:var(--muted)">Also included: the agency portal your vendors use to receive requests, assign staff and submit invoices, and mobile apps for facility, agency and staff users.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOUR HOME GETS -->
+  <section class="section" id="benefits">
+    <div class="wrap">
+      <p class="eyebrow">For long-term care homes</p>
+      <h2 style="margin:.5rem 0 .8rem">What your home gets.</h2>
+      <div class="benefits">
+        <div class="benefit"><b>Hours you can trust</b><p>Clock in and clock out are timestamped to the minute against the scheduled shift. A 7 h 20 min shift is billed as 7 h 20 min.</p></div>
+        <div class="benefit"><b>Invoices that arrive matched</b><p>The invoice and the kiosk record come from the same system. Reconciliation drops from days of spreadsheet work to minutes of review.</p></div>
+        <div class="benefit"><b>Every home in one view</b><p>Open shifts, pending agency responses, coverage gaps for the next seven days and overtime risk across the network, live.</p></div>
+        <div class="benefit"><b>One standard for all your agencies</b><p>Every vendor requests, clocks and invoices the same way. Your team learns one process and your data is comparable across agencies.</p></div>
+        <div class="benefit"><b>A complete audit trail</b><p>Every request, clock event, correction, approval and payment status is logged with user and timestamp, ready for auditors, the Ministry or your board.</p></div>
+        <div class="benefit"><b>Hosted in Canada</b><p>Runs on Google Cloud in Toronto. Encrypted in transit and at rest, role based access, and environment isolation between homes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COST + FAQ -->
+  <section class="section on-mist" id="faq">
+    <div class="wrap cost">
+      <div class="card">
+        <h3>What it costs your home</h3>
+        <div class="big">Nothing.</div>
+        <p>No licence, no per user fee, no per site fee, no implementation fee, no contract term. Not a trial and not a tier. The platform is funded by a small per shift fee paid by the staffing agencies that use it to receive your requests and bill you.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Questions we hear at the booth</p>
+        <div class="faq" style="margin-top:1rem">
+          <details>
+            <summary>Do we have to change the agencies we use?</summary>
+            <p>No. Staflow does not replace your vendors or sit between you and them. It is the shared workspace you both use. You keep the agencies you have; they receive your requests, assign staff and invoice through the platform.</p>
+          </details>
+          <details>
+            <summary>Will our agencies agree to it?</summary>
+            <p>You set the terms your agencies work under. Agencies gain faster shift broadcasting, instant assignment and invoices that are approved on review instead of disputed line by line. Staflow onboards and supports each agency directly, so your team does not run a rollout for your vendors.</p>
+          </details>
+          <details>
+            <summary>What hardware do we need?</summary>
+            <p>One tablet per kiosk location, mounted at the unit or the main entrance. It arrives enrolled in mobile device management and locked to the Staflow kiosk only: no browser, no settings. Everyone else uses a normal web browser.</p>
+          </details>
+          <details>
+            <summary>How long does it take to go live?</summary>
+            <p>Days. A home is configured in a single working session: units, roles, rate cards, agencies and the kiosk. Nothing is installed on your servers and nothing has to be integrated before go live.</p>
+          </details>
+          <details>
+            <summary>Where is our data kept?</summary>
+            <p>In Canada, on Google Cloud in the Toronto region, encrypted in transit and at rest, with daily backups. Access is role based: corporate sees the network, a home sees its own site, an agency sees only its own staff and invoices.</p>
+          </details>
+          <details>
+            <summary>What does it cost the agencies?</summary>
+            <p>A small fee per completed shift, billed monthly. There is nothing to buy up front and nothing to pay for an agency that is not staffing you. Your home pays nothing, ever, and is never affected by an agency's account.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section class="section" id="downloads">
+    <div class="wrap">
+      <p class="eyebrow">Take it with you</p>
+      <h2 style="margin:.5rem 0 .8rem">The brochure, in your pocket.</h2>
+      <p class="lede">The same material we hand out at the booth, to forward to your Director of Care or your finance team.</p>
+      <div class="downloads">
+        <a class="dl" href="../downloads/Staflow-at-a-Glance.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          <div><b>Staflow at a glance</b><span>One page. What it is, what it does, what it costs.</span></div>
+        </a>
+        <a class="dl" href="../downloads/Staflow-Verified-Invoicing-in-3-Steps.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          <div><b>Verified invoicing in three steps</b><span>Kiosk to invoice: clocked in, approved, verified.</span></div>
+        </a>
+        <a class="dl" href="../downloads/Staflow-Executive-Brochure.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          <div><b>Executive brochure</b><span>Eight pages for the C suite, operations and accounts payable.</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section on-navy knot top" id="contact">
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 style="margin:.5rem 0 1rem">Book a 30 minute briefing.</h2>
+        <p>Thirty minutes, in person at your office or in a virtual meeting, after the conference. We walk your team through how the application works and how simple agency invoicing becomes once Staflow is in place.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://calendly.com/nishanth-staflow/30min" target="_blank" rel="noopener">Pick a date and time</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="people">
+          <div class="person"><b>Nishanth Kurian</b><span>Chief Executive Officer</span><a href="mailto:nishanth@staflow.ca">nishanth@staflow.ca</a></div>
+          <div class="person"><b>Bernie McCormick</b><span>Chief Operating Officer</span><a href="mailto:bernie@staflow.ca">bernie@staflow.ca</a></div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <a href="mailto:contact@staflow.ca">contact@staflow.ca</a>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <a href="tel:+16474673569">647 467 3569</a>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <a href="https://staflow.ca">staflow.ca<small>Staflow Inc., Oshawa, Ontario</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <img src="../assets/logo-white.png" alt="Staflow">
+    <div class="cols">
+      <div><a href="mailto:contact@staflow.ca">contact@staflow.ca</a><a href="tel:+16474673569">647 467 3569</a></div>
+    </div>
+    <div class="legal">&copy; 2026 Staflow Inc. All rights reserved. Staflow and the Staflow mark are trademarks of Staflow Inc. Zero fees refers to platform licensing for long-term care homes; staffing agencies pay a per shift platform fee.</div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="https://calendly.com/nishanth-staflow/30min" target="_blank" rel="noopener">Book a 30 minute briefing</a>
+</div>
+
+</body>
+</html>
